@@ -1574,7 +1574,7 @@ def singleSensor_measurement_integral(cube, dic_calib, name_dyes, ratiometric):
 # -----------------------------------------------------------------
 def singleSensor_calibration(path_calib, arg, arg_fit, name_RoI, name_singles, unit, analyte, save_op=None,
                              path_firesting=None, plotting=True, save=False, what_fit=None, par0=None, ls_outlier=None,
-                             ratiometric=True, method='maximal', simply=True):
+                             ratiometric=True, method='integral', simply=True):
     # load calibration files
     dic_calib, dic_calib_STD = load_CorrectedCalibrationFiles(path_calib=path_calib, arg_fit=arg_fit, unit=unit)
     sensorID = [i for i in dic_calib[list(dic_calib.keys())[0]].keys()]
@@ -1627,7 +1627,7 @@ def singleSensor_calibration(path_calib, arg, arg_fit, name_RoI, name_singles, u
 
 
 def measurement_evaluation_single(file_meas, path_calib, meas_dyes, name_ind, pixel_rot, arg_meas, unit='%air',
-                                  analyte='O2', method='maximal', ratiometric=True, plotting=True, saving=False,
+                                  analyte='O2', method='integral', ratiometric=True, plotting=True, saving=False,
                                   save_op=None, save_RoI=True, cmap='inferno', cutoff=5, simply=True):
     # correction of cube and select regions of interest
     cube, fig, ax = corr.hyperCube_preparation(file_hdr=file_meas, arg=arg_meas, name_dyes=meas_dyes, unit=unit,
