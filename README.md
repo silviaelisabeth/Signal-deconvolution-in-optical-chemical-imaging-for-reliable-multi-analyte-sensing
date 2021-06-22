@@ -7,4 +7,4 @@ The jupyter notebooks allow an interactive step-by-step calibration and evaluati
 hyperspectral cube. 
 Signal deconvolution of the overlapped emission spectra (for the dual-sensor) is achieved by linear unmixing. 
 
-All crucial information to understand the code are provided eithin the script. 
+All crucial information to understand the code are provided within the script. 
