@@ -889,51 +889,48 @@ def move_figure(xnew, ynew):
 #     return dic_target, dic_sens_calib, dic_sens_record, dic_figures, df_tan
 #
 #
-# def save_report(para_meas, sensor_ph, sensor_nh3, dsens_record, dtarget):
-#     df_p = pd.DataFrame(np.zeros(shape=(len(para_meas.values()), 2)))
-#     df_p[0] = list(para_meas.keys())
-#     df_p[1] = para_meas.values()
-#     df_p.loc[-1, :] = ['parameter', 'values']
-#     df_p = df_p.sort_index()
-#     df_p.columns = ['parameter', 'values']
-#     df_p.index = ['general'] * len(df_p.index)
-#
-#     df_ph = pd.DataFrame(np.zeros(shape=(len(sensor_ph.values()), 2)))
-#     df_ph[0] = list(sensor_ph.keys())
-#     df_ph[1] = sensor_ph.values()
-#     df_ph.columns = ['parameter', 'values']
-#     df_ph.index = ['ph'] * len(df_ph.index)
-#
-#     df_nh3 = pd.DataFrame(np.zeros(shape=(len(sensor_nh3.values()), 2)))
-#     df_nh3[0] = list(sensor_nh3.keys())
-#     df_nh3[1] = sensor_nh3.values()
-#     df_nh3.columns = ['parameter', 'values']
-#     df_nh3.index = ['nh3'] * len(df_nh3.index)
-#
-#     df_para = pd.concat([df_p, df_ph, df_nh3])
-#
-#     # ..................................................................
-#     # results
-#     dd = pd.concat([dsens_record['NH3'], dsens_record['tan']], axis=1).T.sort_index().T
-#     df_res_ = pd.concat([dd, dsens_record['pH']])
-#     df_res_.columns = ['TAN_record', 'nh3_record / ppm', 'nh4_record / ppm', 'pH_record']
-#
-#     df_ = pd.concat([dtarget['target conc nh3'], dtarget['TAN']], axis=1).T.sort_index().T
-#     df_.columns = ['TAN_target', 'nh3_target / ppm', 'nh4_target / ppm', 'pH_target']
-#     df_res = pd.concat([df_, df_res_]).sort_index().T.sort_index().T
-#     xnew = [int(i) for i in df_res.index]
-#     df_res.index = xnew
-#     df_res = df_res.groupby(df_res.index).mean()
-#     header_res = pd.DataFrame(df_res.columns, columns=['Time / s'], index=df_res.columns).T
-#
-#     df_out = pd.concat([header_res, df_res])
-#     df_para.columns = [0, 1]
-#     df_out.columns = np.arange(0, len(df_out.columns))
-#
-#     output = pd.concat([df_para, df_out])
-#
-#     return output
-#
+def save_report(para_meas, sensor_ph, sensor_nh3, dsens_record, dtarget):
+    df_p = pd.DataFrame(np.zeros(shape=(len(para_meas.values()), 2)))
+    df_p[0] = list(para_meas.keys())
+    df_p[1] = para_meas.values()
+    df_p.loc[-1, :] = ['parameter', 'values']
+    df_p = df_p.sort_index()
+    df_p.columns = ['parameter', 'values']
+    df_p.index = ['general'] * len(df_p.index)
+
+    df_ph = pd.DataFrame(np.zeros(shape=(len(sensor_ph.values()), 2)))
+    df_ph[0] = list(sensor_ph.keys())
+    df_ph[1] = sensor_ph.values()
+    df_ph.columns = ['parameter', 'values']
+    df_ph.index = ['ph'] * len(df_ph.index)
+
+    df_nh3 = pd.DataFrame(np.zeros(shape=(len(sensor_nh3.values()), 2)))
+    df_nh3[0] = list(sensor_nh3.keys())
+    df_nh3[1] = sensor_nh3.values()
+    df_nh3.columns = ['parameter', 'values']
+    df_nh3.index = ['nh3'] * len(df_nh3.index)
+
+    df_para = pd.concat([df_p, df_ph, df_nh3])
+    # ..................................................................
+    # results
+    df_res_ = pd.DataFrame.from_dict(dsens_record)
+    df_ = pd.DataFrame.from_dict(dtarget)
+    df_.columns = ['TAN_target', '{}_target / ppm'.format(df_.columns[1].split(' ')[0]), 'pH_target']
+
+    df_res = pd.concat([df_, df_res_]).sort_index().T.sort_index().T
+    xnew = [int(i) for i in df_res.index]
+    df_res.index = xnew
+    df_res = df_res.groupby(df_res.index).mean()
+    header_res = pd.DataFrame(df_res.columns, columns=['Time / s'], index=df_res.columns).T
+
+    df_out = pd.concat([header_res, df_res])
+    df_para.columns = [0, 1]
+    df_out.columns = np.arange(0, len(df_out.columns))
+
+    output = pd.concat([df_para, df_out])
+
+    return output
+
 #
 # def load_data(file):
 #     file_ = open(file, 'r')
