@@ -9,7 +9,7 @@ Signal deconvolution of the overlapped emission spectra (for the dual-sensor) is
 
 All crucial information to understand the code are provided within the script. 
 
-The scripts are part of the data analysis leading to the following manuscript
+The scripts are part of the data analysis leading to the following manuscript\n
 Zieger SE, Mosshammer M, Kühl M, and Koren K, *Hyperspectral Luminescence Imaging in Combination with Signal Deconvolution Enables Reliable Multi-Indicator-Based Chemical Sensing*
 ACS Sens. *2021*, 6, 1, 183–191
 https://doi.org/10.1021/acssensors.0c02084
