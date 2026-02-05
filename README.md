@@ -14,3 +14,9 @@ The scripts are part of the data analysis leading to the following manuscript
 Zieger SE, Mosshammer M, Kühl M, and Koren K, *Hyperspectral Luminescence Imaging in Combination with Signal Deconvolution Enables Reliable Multi-Indicator-Based Chemical Sensing*. ACS Sens. *2021*, 6, 1, 183–191, https://doi.org/10.1021/acssensors.0c02084
 
 ![images_medium_se0c02084_0007](https://github.com/silviaelisabeth/Signal-deconvolution-in-optical-chemical-imaging-for-reliable-multi-analyte-sensing/assets/46005283/b2a0b9ea-f4f3-4da0-9452-bbe03d0dba94)
+
+---
+### License
+![License: CC BY‑NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)
+
+This project/repo is licensed under the [Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/).
